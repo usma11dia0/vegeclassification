@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+#from django.http import HttpResponse  確認用
 
-def input(request):
-    return render(request, 'vegeapp/input.html')
+def index(request):
+    return render(request, '../templates/send_image_app/index.html')
