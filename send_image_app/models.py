@@ -1,4 +1,4 @@
 from django.db import models
-from datetime import date
 
-
+class ModelFile(models.Model):
+    image = models.ImageField(upload_to='documents/')

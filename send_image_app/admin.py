@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# admin.site.register(データベースクラス名)
+from send_image_app.models import ModelFile
+
+admin.site.register(ModelFile)

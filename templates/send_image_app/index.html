@@ -1,7 +1,11 @@
 {% extends 'send_image_app/base.html' %}
 
 {% block content %}
-
-    <h1>Hello Django</h1>
-
+    <div class="container" style="margin-top: 20px;">
+        <form  method="POST" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success" style=margin-top:20px;>SEND</button>
+        </form>
+    </div>
 {% endblock %}
