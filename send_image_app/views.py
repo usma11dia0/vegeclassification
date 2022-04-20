@@ -4,7 +4,7 @@ from .forms import ImageForm
 def image_upload(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
-        if form.is_valied():
+        if form.is_valid():
             form.save()
             img_name = request.FILES['image']
             img_url = 'media/documents/{}'.format(img_name)
