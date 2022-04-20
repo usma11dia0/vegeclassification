@@ -1,3 +1,18 @@
+#モデル学習用のimport ※pip install要
+import joblib
+import numpy as np
+import pandas as pd
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torchvision
+from torchvision import transforms, datasets
+from torchvision.models import resnet18
+import pytorch_lightning as pl
+import torchmetrics
+from torchmetrics.functional import accuracy
+
+
 #ファインチューニング(全結合層を調整)
 class Net(pl.LightningModule):
 

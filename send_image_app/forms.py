@@ -5,3 +5,4 @@ class ImageForm(forms.ModelForm):
     class Meta:
         model = ModelFile
         fields = ('image',)
+        exclude =['id','result','registered_date']
