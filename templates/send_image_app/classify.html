@@ -2,6 +2,8 @@
 {% block content %}
 
 <div class="container">
- <img src="{{ img_url}}" alt="">
+ <img id="prob_img" src="{{ img_url}}" alt="アップロードした画像">
+ <h4 id="label">結果：{{y}}</p>
+ <h4 id="proba">信頼度：{{y_proba}}</p>
 </div>
 {% endblock %}
