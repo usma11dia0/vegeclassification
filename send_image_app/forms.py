@@ -15,6 +15,11 @@ class LoginForm(AuthenticationForm):
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
             field.widget.attrs['placeholder'] = field.label
+            if field.label == 'ユーザー名':
+                field.widget.attrs['id'] = 'username'
+            elif field.label == 'パスワード':
+                field.widget.attrs['id'] = 'password'
+
 
 class SignUpForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
@@ -22,7 +27,12 @@ class SignUpForm(UserCreationForm):
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
             field.widget.attrs['placeholder'] = field.label
-    
+            if field.label == 'ユーザー名':
+                field.widget.attrs['id'] = 'username'
+            elif field.label == 'パスワード':
+                field.widget.attrs['id'] = 'password1'
+            elif field.label == 'パスワード(確認用)':
+                field.widget.attrs['id'] = 'password2'
     class Meta:
         model = User
         fields = ('username', 'password1', 'password2')

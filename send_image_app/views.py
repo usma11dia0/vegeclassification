@@ -61,7 +61,6 @@ def signup(request):
                 login(request,new_user)
             return redirect('index')
         else:
-           form = SignUpForm()
            return render(request, 'send_image_app/signup.html', {'form':form}) 
     else:
         form = SignUpForm()

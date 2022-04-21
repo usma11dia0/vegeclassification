@@ -11,7 +11,7 @@
       
       {% if user.is_authenticated %}
       <span style="font-size:15px; text-align: right;">
-        <a href="{% url 'logout' %}" style="color:white; text-decoration: underline;">
+        <a href="{% url 'logout' %}" id = "logout" style="color:white; text-decoration: underline;">
           こんにちは、{{ user.username}}さん
         </a>
       </span> 
