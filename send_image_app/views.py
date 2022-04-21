@@ -1,9 +1,11 @@
 from unittest import result
 from django.shortcuts import render
+from django.contrib.auth.views import LoginView, LogoutView
 
 from model.predict import classify
-from .forms import ImageForm
+from .forms import ImageForm, LoginForm
 from .models import ModelFile, VegeInformation
+
 
 def image_upload(request):
     if request.method == 'POST':
@@ -36,3 +38,10 @@ def image_upload(request):
     else:
         form = ImageForm()
         return render(request, 'send_image_app/index.html', {'form':form})
+
+class Login(LoginView):
+    form_class = LoginForm
+    template_name = 'send_image_app/login.html'
+
+class Logout(LogoutView):
+    template_name = 'send_image_app/base.html'
