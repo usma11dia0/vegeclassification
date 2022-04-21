@@ -1,12 +1,14 @@
-from unittest import result
-from django.shortcuts import render
+#from unittest import result
+from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 
 from model.predict import classify
-from .forms import ImageForm, LoginForm
+from .forms import ImageForm, LoginForm, SignUpForm
 from .models import ModelFile, VegeInformation
 
-
+@login_required
 def image_upload(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
@@ -45,3 +47,23 @@ class Login(LoginView):
 
 class Logout(LogoutView):
     template_name = 'send_image_app/base.html'
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username =  form.cleaned_data.get('username')
+            password =  form.cleaned_data.get('password1')
+            new_user = authenticate(username=username,password=password)
+            if new_user is not None:
+                login(request,new_user)
+            return redirect('index')
+        else:
+           form = SignUpForm()
+           return render(request, 'send_image_app/signup.html', {'form':form}) 
+    else:
+        form = SignUpForm()
+        return render(request, 'send_image_app/signup.html', {'form':form})
+    
