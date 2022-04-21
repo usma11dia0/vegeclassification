@@ -3,11 +3,27 @@
   <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>{% block title %}葉物野菜判定アプリ{% endblock %}</title>
+    <style>
+      .errorlist {
+        border: .1rem solid #f00;
+        color: #f00;
+        background: rgba(255, 0, 0, .15);
+        list-style-position: inside;
+        display: block;
+        padding: 1rem;
+        text-align: left;
+        border-radius: .3rem;
+        margin-top: 15px;
+      }
+    </style>
   </head>
 
   <body>
-    <nav class="navbar navbar-light" style="background-color: #00b9f1;">
-      <span class="navbar-brand mb-0 h1">葉物野菜判定アプリ</span>
+    <nav class="navbar navbar-light" style="background-color: #006400; width:100%">
+      <span class="navbar-brand mb-0 h1" style="font-weight: bold; color: white; font-size: x-large;">
+        葉物野菜判定アプリ<br>
+        <span style="color:white; font-size: small;">キャベツ・レタス・白菜を分別します。</span>
+      </span>
       
       {% if user.is_authenticated %}
       <span style="font-size:15px; text-align: right;">

@@ -33,6 +33,7 @@ class SignUpForm(UserCreationForm):
                 field.widget.attrs['id'] = 'password1'
             elif field.label == 'パスワード(確認用)':
                 field.widget.attrs['id'] = 'password2'
+
     class Meta:
         model = User
         fields = ('username', 'password1', 'password2')

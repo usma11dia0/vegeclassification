@@ -1,22 +1,23 @@
 {% extends "send_image_app/base.html" %}
 
 {% block content %}
-<!-- 認証失敗時の警告文 -->
+
 {% if form.errors %}
-<p>ログイン認証に失敗しました。</p>
+<p class="errorlist" style="margin-left:27px; margin-right:27px;">ログイン認証に失敗しました。</p>
 {% endif %}
 
-<div class="container" style="margin-top: 30px;">
+<div class="container" style="margin-top: 30px";>
+    <h1 style="margin-bottom: 30px;">Login Form</h1>
     <form method="POST">{% csrf_token %}
         <p>{{ form.username }}</p>
         <p>{{ form.password }}</p>
         <div style="margin-top: 20px;">
-            <button id="send-login" type="submit" value="login" class="btn btn-primary">login</button>
+            <button id="send-login" type="submit" value="login" class="btn btn-success">login</button>
         </div>
     </form>
     <div style="margin-top: 15px;">
         <form method="POST" action="{% url 'signup' %}">{% csrf_token %}
-            <button class="btn btn-primary" type = "submit">sign-up</button>
+            <button class="btn btn-success" type = "submit">sign-up</button>
         </form>
     </div>
 </div>
