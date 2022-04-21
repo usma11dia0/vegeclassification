@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 from model.predict import classify
 from .forms import ImageForm
-from .models import ModelFile
+from .models import ModelFile, VegeInformation
 
 def image_upload(request):
     if request.method == 'POST':
@@ -20,9 +20,18 @@ def image_upload(request):
             modelfile.result = y
             modelfile.save()
 
-        return render(request,
-                     'send_image_app/classify.html',
-                     {'y':y, 'y_proba':round(y_proba,2),'img_url':img_url}
+            #結果出力用に修正
+            vegedata = VegeInformation.objects.all().get(label=y)
+            y_name = vegedata.name
+            knowledge = vegedata.knowledge
+
+
+        return render(request,'send_image_app/classify.html',
+                        {'y_name':y_name,
+                        'y_proba':round(y_proba,2),
+                        'img_url':img_url,
+                        'knowledge':knowledge
+                        }
                      )
     else:
         form = ImageForm()

@@ -14,3 +14,15 @@ class ModelFile(models.Model):
             return '%d,%s,%s' % (self.id, self.image, self.registered_date.strftime('%Y-%m-%d'))
         else:
             return '%d,%s,%s,%s' % (self.id, self.image, self.registered_date.strftime('%Y-%m-%d'),self.result)
+
+
+class VegeInformation(models.Model):
+    id = models.AutoField(primary_key=True)
+    label = models.IntegerField(null=False)
+    name = models.CharField(max_length=50)
+    knowledge = models.CharField(max_length=255)
+    registered_date = models.DateField(default=date.today())
+
+    #管理画面に表示方法を定義：必須項目が入っているかどうかで表示内容を分ける
+    def __str__(self):
+      return '%d,%s,%s' % (self.label, self.name, self.registered_date.strftime('%Y-%m-%d'))
